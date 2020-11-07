@@ -141,7 +141,11 @@ def _package_evals(eval_set, sample_weight_eval_set=None, missing=None, n_jobs=N
             sample_weight_eval_set = [None] * len(eval_set)
         evals = list(
             xgb.DMatrix(
-                data, label=label, missing=missing, weight=weight, nthread=n_jobs,
+                data,
+                label=label,
+                missing=missing,
+                weight=weight,
+                nthread=n_jobs,
             )
             for ((data, label), weight) in zip(eval_set, sample_weight_eval_set)
         )
@@ -275,7 +279,7 @@ def train(
     sample_weight=None,
     **kwargs
 ):
-    """ Train an XGBoost model on a Dask Cluster
+    """Train an XGBoost model on a Dask Cluster
 
     This starts XGBoost on all Dask workers, moves input data to those workers,
     and then calls ``xgboost.train`` on the inputs.
@@ -338,7 +342,7 @@ def _predict_part(part, model=None):
 
 
 def predict(client, model, data):
-    """ Distributed prediction with XGBoost
+    """Distributed prediction with XGBoost
 
     Parameters
     ----------

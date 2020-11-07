@@ -24,7 +24,10 @@ distributed.comm.utils._offload_executor = ThreadPoolExecutor(max_workers=2)
 
 
 df = pd.DataFrame(
-    {"x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "y": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0],}
+    {
+        "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "y": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+    }
 )
 labels = pd.Series([1, 0, 1, 0, 1, 0, 1, 1, 1, 1])
 
@@ -286,7 +289,11 @@ def test_regressor_with_early_stopping(loop):  # noqa
             X2 = da.from_array(X, 5)
             y2 = da.from_array(y, 5)
             a.fit(
-                X2, y2, early_stopping_rounds=4, eval_metric="rmse", eval_set=[(X, y)],
+                X2,
+                y2,
+                early_stopping_rounds=4,
+                eval_metric="rmse",
+                eval_set=[(X, y)],
             )
             p1 = a.predict(X2)
 
@@ -315,7 +322,8 @@ def test_validation_weights_xgbregressor(loop):  # noqa
             reg = dxgb.XGBRegressor()
 
             reg.fit(
-                dX_train, dy_train,  # sample_weight=weights_train,
+                dX_train,
+                dy_train,  # sample_weight=weights_train,
             )
             preds = reg.predict(dX_test)
 
