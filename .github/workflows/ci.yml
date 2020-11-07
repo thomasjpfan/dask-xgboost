@@ -19,6 +19,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@16930e6
         with:
           auto-update-conda: true
+          mamba-version: "*"
           miniconda-version: latest
           activate-environment: dask-xgboost-test
           environment-file: ci/environment-${{ matrix.python-version }}.yaml
