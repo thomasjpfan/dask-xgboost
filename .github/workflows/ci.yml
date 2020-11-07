@@ -20,9 +20,6 @@ jobs:
         with:
           auto-update-conda: true
           miniconda-version: latest
-          mamba-version: "*"
-          channels: conda-forge,defaults
-          channel-priority: true
           activate-environment: dask-xgboost-test
           environment-file: ci/environment-${{ matrix.python-version }}.yaml
 
